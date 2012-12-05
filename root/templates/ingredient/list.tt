@@ -1,0 +1,3 @@
+[% FOR ingredient IN ingredients %]
+  [% ingredient.name %]<br />
+[% END %]

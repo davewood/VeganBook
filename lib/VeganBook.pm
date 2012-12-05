@@ -63,6 +63,7 @@ __PACKAGE__->config(
     'CatalystX::Resource' => {
         controllers => [qw/
             Recipe
+            Ingredient
         /]
     },
     'Controller::Recipe' => {
@@ -76,6 +77,20 @@ __PACKAGE__->config(
             base => {
                 Chained => '/',
                 PathPart => 'recipe',
+            },
+        },
+    },
+    'Controller::Ingredient' => {
+        resultset_key          => 'ingredients_rs',
+        resources_key          => 'ingredients',
+        resource_key           => 'ingredient',
+        form_class             => 'VeganBook::Form::Ingredient',
+        model                  => 'DB::Ingredient',
+        redirect_mode          => 'list',
+        actions                => {
+            base => {
+                Chained => '/',
+                PathPart => 'ingredient',
             },
         },
     },

@@ -1,17 +1,13 @@
-package VeganBook::Form::Recipe;
+package VeganBook::Form::Ingredient;
 
 use HTML::FormHandler::Moose;
 extends 'HTML::FormHandler::Model::DBIC';
 
 with 'HTML::FormHandler::Widget::Theme::Bootstrap';
 
-has '+item_class'   => (default => 'Recipe');
+has '+item_class'   => (default => 'Ingredient');
 has_field 'name'    => (type    => 'Text', required => 1);
 has_field 'content' => (type    => 'TextArea', required => 1);
-has_field 'ingredients' => (
-    type   => 'Multiple',
-    widget => 'checkbox_group',
-);
 has_field 'submit'  => (type    => 'Submit');
 
 1;

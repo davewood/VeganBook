@@ -25,6 +25,7 @@
           <a class="brand" href="[% c.uri_for('/') %]">VeganBook</a>
           <ul class="nav">
               <li><a href="[% c.uri_for(c.controller('Recipe').action_for('list')) %]">Recipe</a></li>
+              <li><a href="[% c.uri_for(c.controller('Ingredient').action_for('list')) %]">Ingredient</a></li>
           </ul>
         </div>
       </div>

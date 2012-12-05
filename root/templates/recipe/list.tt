@@ -1,3 +1,6 @@
 [% FOR recipe IN recipes %]
   [% recipe.name %]<br />
+  ([% FOR ingredient IN recipe.ingredients %]
+    [% ingredient.name %],
+  [% END %])
 [% END %]
