@@ -1,8 +1,52 @@
-<html>
-<head>
-<title>VeganBook</title>
-</head>
-<body>
-[% content %]
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>VeganBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/all.css" rel="stylesheet">
+
+    <!-- IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="[% c.uri_for('/') %]">VeganBook</a>
+          <ul class="nav">
+              <li><a href="[% c.uri_for(c.controller('Recipe').action_for('list')) %]">Recipe</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        [% IF error_msg %]
+        <div class="alert alert-error">
+            <button class="close" data-dismiss="alert">&times;</button>
+            [% error_msg %]
+        </div>
+        [% END %]
+        [% IF msg %]
+        <div class="alert alert-success">
+            <button class="close" data-dismiss="alert">&times;</button>
+            [% msg %]
+        </div>
+        [% END %]
+        [% content %]
+    </div> <!-- /container -->
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+  </body>
 </html>
