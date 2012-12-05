@@ -17,9 +17,9 @@ use Catalyst::Runtime 5.80;
 #                 directory
 
 use Catalyst qw/
-    -Debug
     ConfigLoader
     Static::Simple
+    Unicode::Encoding
 /;
 
 extends 'Catalyst';
@@ -40,6 +40,13 @@ __PACKAGE__->config(
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
     enable_catalyst_header => 1, # Send X-Catalyst header
+    'View::HTML' => {
+        INCLUDE_PATH => [
+            __PACKAGE__->path_to( qw/ root templates / ),
+        ],
+        WRAPPER => 'wrapper.tt',
+        ENCODING => 'utf-8',
+    },
 );
 
 # Start the application
