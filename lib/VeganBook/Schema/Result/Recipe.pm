@@ -20,4 +20,16 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key('id');
 __PACKAGE__->resultset_attributes({ order_by => 'updated' });
 
+__PACKAGE__->has_many(
+    'recipe_ingredients',
+    'VeganBook::Schema::Result::RecipeIngredient',
+    'recipe_id',
+);
+
+__PACKAGE__->many_to_many(
+    'ingredients',
+    'recipe_ingredients',
+    'ingredient'
+);
+
 1;
