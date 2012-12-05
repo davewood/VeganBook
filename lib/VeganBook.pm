@@ -20,6 +20,11 @@ use Catalyst qw/
     ConfigLoader
     Static::Simple
     Unicode::Encoding
+    +CatalystX::Resource
+    Session
+    Session::Store::FastMmap
+    Session::State::Cookie
+    StackTrace
 /;
 
 extends 'Catalyst';
@@ -40,6 +45,7 @@ __PACKAGE__->config(
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
     enable_catalyst_header => 1, # Send X-Catalyst header
+    'Plugin::Session' => { flash_to_stash => 1 },
     'View::HTML' => {
         INCLUDE_PATH => [
             __PACKAGE__->path_to( qw/ root templates / ),
@@ -52,6 +58,25 @@ __PACKAGE__->config(
         connect_info => {
             dsn => 'dbi:SQLite:dbname=' . __PACKAGE__->path_to('veganbook.db'),
             sqlite_unicode => 1,
+        },
+    },
+    'CatalystX::Resource' => {
+        controllers => [qw/
+            Recipe
+        /]
+    },
+    'Controller::Recipe' => {
+        resultset_key          => 'recipes_rs',
+        resources_key          => 'recipes',
+        resource_key           => 'recipe',
+        form_class             => 'VeganBook::Form::Recipe',
+        model                  => 'DB::Recipe',
+        redirect_mode          => 'list',
+        actions                => {
+            base => {
+                Chained => '/',
+                PathPart => 'recipe',
+            },
         },
     },
 );
