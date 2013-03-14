@@ -45,7 +45,7 @@ die "'deployment_handler_dir' not configured."
 my $dh = DBIx::Class::DeploymentHandler->new(
     {   schema           => $schema,
         script_directory => $deployment_handler_dir,
-        databases        => 'PostgreSQL',
+        databases        => 'SQLite',
         force_overwrite  => 1,
     }
 );
