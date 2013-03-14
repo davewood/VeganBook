@@ -5,5 +5,6 @@ my $config = {
             sqlite_unicode => 1,
         },
     },
+    deployment_handler_dir => '__HOME__/db_upgrades/',
 };
 return $config;
