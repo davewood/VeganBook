@@ -55,10 +55,6 @@ __PACKAGE__->config(
     },
     'Model::DB' => {
         schema_class => 'VeganBook::Schema',
-        connect_info => {
-            dsn => 'dbi:SQLite:dbname=' . __PACKAGE__->path_to('veganbook.db'),
-            sqlite_unicode => 1,
-        },
     },
     'CatalystX::Resource' => {
         controllers => [qw/
