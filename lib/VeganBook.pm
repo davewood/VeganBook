@@ -47,6 +47,8 @@ __PACKAGE__->config(
     enable_catalyst_header => 1, # Send X-Catalyst header
     'Plugin::Session' => { flash_to_stash => 1 },
     'View::HTML' => {
+        TEMPLATE_EXTENSION => '.tt',
+        render_die         => 1,
         INCLUDE_PATH => [
             __PACKAGE__->path_to( qw/ root templates / ),
         ],
