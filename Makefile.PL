@@ -17,6 +17,7 @@ requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Config::JFDI';
 requires 'DBIx::Class::DeploymentHandler' => '0.002205';
+requires 'DBIx::Class::Schema::Loader';
 requires 'Dir::Self';
 requires 'Getopt::Long';
 requires 'CatalystX::Resource' => '0.004002';
